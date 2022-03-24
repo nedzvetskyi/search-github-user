@@ -1,0 +1,45 @@
+import React from 'react'
+
+// Include the react-fusioncharts component
+import ReactFC from 'react-fusioncharts'
+
+// Include the fusioncharts library
+import FusionCharts from 'fusioncharts'
+
+// Include the chart type
+import Charts from 'fusioncharts/fusioncharts.charts'
+
+// Include the theme as fusion
+import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion'
+
+// Adding the chart and theme as dependency to the core fusioncharts
+ReactFC.fcRoot(FusionCharts, Charts, FusionTheme)
+
+const Column2D = ({ data }) => {
+  const chartConfigs = {
+    type: 'column2d', // The chart type
+    width: '100%', // Width of the chart
+    height: '400', // Height of the chart
+    dataFormat: 'json', // Data type
+    dataSource: {
+      // Chart Configuration
+      chart: {
+        caption: 'Most popular',
+        decimals: '0',
+        theme: 'fusion',
+        useDataPlotColorForLabels: '1',
+        showPercentValues: '0',
+        yAxisName: 'Stars',
+        xAxisName: 'Repos',
+        yAxisNameFontSize: '18',
+        xAxisNameFontSize: '18',
+        paletteColors: '#2CAEBA, #5D62B5, #F2726F, #FFC533, #8D6E63',
+      },
+      // Chart Data
+      data,
+    },
+  }
+  return <ReactFC {...chartConfigs} />
+}
+
+export default Column2D
